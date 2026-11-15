@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-<meta charset="utf-8"><script>(function(){try{var L=localStorage,b=+L.getItem('lp_boot')||0;window.LP_SAFE=b>=1;L.setItem('lp_boot',String(b+1));addEventListener('load',function(){setTimeout(function(){try{L.setItem('lp_boot','0')}catch(e){}},20000)})}catch(e){}})();</script>
+<meta charset="utf-8"><script>(function(){try{var L=localStorage,K='lp_boot2',b=+L.getItem(K)||0;window.LP_SAFE=b>=2;L.setItem(K,String(b+1));var ok=function(){try{L.setItem(K,'0')}catch(e){}};addEventListener('pagehide',ok);document.addEventListener('visibilitychange',function(){if(document.hidden)ok()});addEventListener('load',function(){setTimeout(ok,8000)})}catch(e){}})();</script>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
 <title>룸피니공원_물멍 불멍_1차 버전</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -342,7 +342,7 @@ const isWaterM=(x,z)=>at(mWater,x,z)>127;
 // ---------------- renderer ----------------
 const renderer=new THREE.WebGLRenderer({antialias:false,powerPreference:isTouch?'default':'high-performance',preserveDrawingBuffer:false});
 renderer.setPixelRatio(Math.min(devicePixelRatio,isTouch?1:(HQ?1.6:1.15)));
-renderer.domElement.addEventListener('webglcontextlost',e=>{e.preventDefault();try{localStorage.setItem('lp_boot','1')}catch(_){}const d=document.createElement('div');d.style.cssText='position:fixed;inset:0;z-index:999;background:rgba(8,12,10,.92);color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;font:16px system-ui;text-align:center;padding:24px';d.innerHTML='화면 메모리가 부족해 그래픽이 멈췄어요.<br>가벼운 모드로 다시 열게요.<button style="padding:10px 20px;border-radius:999px;border:0;font-size:15px">다시 열기</button>';d.querySelector('button').onclick=()=>location.reload();document.body.appendChild(d)});
+renderer.domElement.addEventListener('webglcontextlost',e=>{e.preventDefault();try{localStorage.setItem('lp_boot2','2')}catch(_){}const d=document.createElement('div');d.style.cssText='position:fixed;inset:0;z-index:999;background:rgba(8,12,10,.92);color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;font:16px system-ui;text-align:center;padding:24px';d.innerHTML='화면 메모리가 부족해 그래픽이 멈췄어요.<br>가벼운 모드로 다시 열게요.<button style="padding:10px 20px;border-radius:999px;border:0;font-size:15px">다시 열기</button>';d.querySelector('button').onclick=()=>location.reload();document.body.appendChild(d)});
 renderer.setSize(innerWidth,innerHeight);
 renderer.shadowMap.enabled=true;renderer.shadowMap.type=THREE.PCFSoftShadowMap;
 renderer.toneMapping=THREE.ACESFilmicToneMapping;renderer.toneMappingExposure=0.6;
